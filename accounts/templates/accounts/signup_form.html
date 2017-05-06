@@ -1,0 +1,35 @@
+{% extends "accounts/layout.html" %}
+
+
+{% block content %}
+<form action="" method="post">
+<legend>회원가입!</legend>
+{% csrf_token %}
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="form-group">
+
+  {{ form.as_p }}
+
+  <div class="form-group">
+    <div class="col-sm-12">
+      <button type="submit" class="btn btn-info btn-block">회원가입</button>
+    </div>
+  </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</form>
+<script>
+$(function() {
+  $('.form-group label').addClass('col-sm-2');
+  $('.form-group input, .form-group textarea').addClass('form-control');
+});
+
+
+</script>
+
+{% endblock %}

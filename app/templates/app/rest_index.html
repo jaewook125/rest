@@ -1,0 +1,39 @@
+{% extends "app/layout.html" %}
+{% load imagekit %}
+
+{% block content %}
+
+{% if restaurant %}
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+        <p style="text-align:center;"></p>
+          <p style="float: right"><small>작성자 : {{ restaurant.author }}</small></p>
+
+          <div>
+            <p>식당 이름! : {{ restaurant.restname }}</p>
+          </div>
+          {% if restaurant.restimage %}
+
+            {% thumbnail "350x350" restaurant.restimage as thumb %}
+
+            <center><img src="{{ thumb.url }}"
+              width="{{ thumb.width }}" height="{{ thumb.height }}"
+              alt="Cinque Terre"
+              class="img-responsive img-rounded"
+              style="max_length: 100%;"/></center>
+          {% else %}
+            <center>이미지가 없네요! 업로드 해주세요!</center>
+          {% endif %}
+
+
+          <p>간략한 위치 : {{ restaurant.restsite }}</p>
+        </hr>
+
+          <form><input type="button" class="btn btn-primary btn-block" value="다른 식당 검색!" onClick="window.location.reload()"></form>
+      </div>
+    </div>
+  </div>
+{% endif %}
+
+{% endblock %}

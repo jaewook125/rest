@@ -1,0 +1,20 @@
+{% extends "accounts/layout.html" %}
+
+{% block content %}
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+      <p style="text-align:center;"></p>
+  <h2>{{ user }}'님의 프로필!</h2>
+  <ul>
+
+      <li>아이디 : {{user.username}}</li>
+      <li>가입날짜 : {{user.date_joined}}</li>
+
+  </ul>
+
+
+    </div>
+  </div>
+</div>
+  {% endblock %}
