@@ -1,5 +1,6 @@
 from .common import *
-from .conf import *
+
+ALLOWED_HOSTS = ['*']
 
 DATABASES = {
     'default': {

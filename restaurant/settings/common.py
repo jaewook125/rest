@@ -40,7 +40,12 @@ INSTALLED_APPS = [
     'imagekit',
     'app',
     'accounts',
+    'raven.contrib.django.raven_compat',
 ]
+
+RAVEN_CONFIG = {
+    'dsn': RAVEN_DSN,
+    }
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
