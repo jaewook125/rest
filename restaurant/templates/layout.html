@@ -28,6 +28,7 @@
       </button>
       <a class="navbar-brand" href="{% url "root" %}">랜덤 식당</a>
     <div class="collapse navbar-collapse" id="myNavbar">
+
       <ul class="nav navbar-nav">
 {% if user.is_authenticated %}
         <li><a href="{% url "app:rest_new" %}">식당 추가!</a></li>
@@ -49,7 +50,7 @@
       </ul>
     {% else %}
 
-
+        <li><a href="{% url "app:rest_list" %}">내가 올린 식당</a></li>
         <li><a href="{% url "profile" %}">프로필</a></li>
         <li><a href="{% url "logout" %}?next={{ request.path }}">로그아웃</a></li>
       </ul>
