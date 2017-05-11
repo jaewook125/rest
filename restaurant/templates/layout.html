@@ -50,7 +50,6 @@
       </ul>
     {% else %}
 
-        <li><a href="{% url "app:rest_list" %}">내가 올린 식당</a></li>
         <li><a href="{% url "profile" %}">프로필</a></li>
         <li><a href="{% url "logout" %}?next={{ request.path }}">로그아웃</a></li>
       </ul>
