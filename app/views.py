@@ -4,17 +4,17 @@ from django.contrib import messages
 from .models import Restaurant
 from .forms import RestForm
 
-def rest_list(request):
-    qs = Restaurant.objects.all()
-
-    q = request.GET.get('q', '')
-
-    if q:
-        qs = qs.filter(restname__icontains=q)
-
-    return render(request, 'app/rest_list.html',{
-        'rest_list':qs
-    })
+# def rest_list(request):
+#     qs = Restaurant.objects.all()
+#
+#     q = request.GET.get('q', '')
+#
+#     if q:
+#         qs = qs.filter(restname__icontains=q)
+#
+#     return render(request, 'app/rest_list.html',{
+#         'rest_list':qs
+#     })
 
 def rest_index(request):
     restaurant = Restaurant.objects.order_by('?').first()
