@@ -4,17 +4,17 @@ from django.contrib import messages
 from .models import Restaurant
 from .forms import RestForm
 
-# def rest_list(request):
-#     qs = Restaurant.objects.all()
-#
-#     q = request.GET.get('q', '')
-#
-#     if q:
-#         qs = qs.filter(restname__icontains=q)
-#
-#     return render(request, 'app/rest_list.html',{
-#         'rest_list':qs
-#     })
+def rest_list(request):
+    qs = Restaurant.objects.all()
+
+    q = request.GET.get('q', '')
+
+    if q:
+        qs = qs.filter(restname__icontains=q)
+
+    return render(request, 'app/rest_list.html',{
+        'rest_list':qs
+    })
 
 def rest_index(request):
     restaurant = Restaurant.objects.order_by('?').first()
@@ -43,6 +43,8 @@ def rest_new(request):
 @login_required
 def rest_edit(request, id):
     restaurant = get_object_or_404(Restaurant, id=id)
+    if restaurant.author != request.user:
+        return redirect(restaurant)
     if request.method == 'POST':
         form = RestForm(request.POST, request.FILES, instance=restaurant)
         if form.is_valid():
@@ -61,8 +63,9 @@ def rest_edit(request, id):
 
 @login_required
 def rest_delete(request,id):
-    restaurant = Restaurant.objects.filter(id=id).delete()
+    restaurant = Restaurant.objects.get(id=id)
+    if restaurant.author != request.user:
+        return redirect(restaurant)
+    restaurant.delete()
     messages.success(request, '식당을 삭제했습니다.')
-    return render(request, 'app/rest_delete.html',{
-        'restaurant':restaurant
-    })
+    return redirect(restaurant)

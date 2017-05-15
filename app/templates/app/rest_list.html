@@ -1,0 +1,88 @@
+{% extends "app/layout.html" %}
+
+{% block content %}
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="http://getbootstrap.com/dist/js/bootstrap.min.js"></script>
+
+<div class="container">
+	<div class="row">
+
+
+        <div class="col-md-12">
+        <h4>내 식당 목록</h4>
+        <div class="table-responsive">
+
+
+              <table id="mytable" class="table table-bordred table-striped">
+
+                   <thead>
+
+                   <!-- <th><input type="checkbox" id="checkall" /></th> -->
+                   <th>식당 이름</th>
+                    <th>식당 위치</th>
+                     <th>작성자</th>
+											<th>수정</th>
+                       <th>삭제</th>
+                   </thead>
+    <tbody>
+    {% for rest in rest_list %}
+      {% if rest.author == request.user %}
+    <tr>
+    <!-- <td><input type="checkbox" class="checkthis" /></td> -->
+    <td>{{ rest.restname }}</td>
+    <td>{{ rest.restsite }}</td>
+    <td>{{ rest.author }}</td>
+		<td><a id="rest_edit" href="{% url "app:rest_edit" rest.id %}">
+			<p data-placement="top" data-toggle="tooltip" title="Edit">
+			<button class="btn btn-primary btn-xs" data-title="Edit" >
+				<span class="glyphicon glyphicon-pencil"></span></button></p></a></td>
+
+    <td><a id="delete_rest" href="{% url "app:rest_delete" rest.id %}">
+      <p data-placement="top" data-toggle="tooltip" title="Delete">
+      <button class="btn btn-danger btn-xs" data-title="Delete" >
+        <span class="glyphicon glyphicon-trash"></span></button></p></a></td>
+    </tr>
+      {% endif %}
+    {% endfor %}
+
+    </tbody>
+
+</table>
+
+<!-- <div class="clearfix"></div>
+<ul class="pagination pull-right" id=mypager>
+  <li class="disabled"><a href="#"><span class="glyphicon glyphicon-chevron-left"></span></a></li>
+  <li class="active"><a href="#">1</a></li>
+  <li><a href="#">2</a></li>
+  <li><a href="#">3</a></li>
+  <li><a href="#">4</a></li>
+  <li><a href="#">5</a></li>
+  <li><a href="#"><span class="glyphicon glyphicon-chevron-right"></span></a></li>
+</ul> -->
+
+            </div>
+
+        </div>
+	</div>
+</div>
+<!-- <script>
+$(document).ready(function(){
+$("#mytable #checkall").click(function () {
+        if ($("#mytable #checkall").is(':checked')) {
+            $("#mytable input[type=checkbox]").each(function () {
+                $(this).prop("checked", true);
+            });
+
+        } else {
+            $("#mytable input[type=checkbox]").each(function () {
+                $(this).prop("checked", false);
+            });
+        }
+    });
+});
+</script> -->
+
+
+
+{% endblock %}

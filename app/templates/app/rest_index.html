@@ -25,8 +25,11 @@
           {% else %}
             <center>이미지가 없네요! 업로드 해주세요!</center>
           {% endif %}
-
-
+          {% if not restaurant.restimage %}
+          <center>
+             <img src="http://upload2.inven.co.kr/upload/2016/01/03/bbs/i13737846850.gif" width="350px" height="250px"/>
+          </center>
+          {% endif %}
           <p>간략한 위치 : {{ restaurant.restsite }}</p>
         </hr>
 

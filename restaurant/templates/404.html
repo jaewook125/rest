@@ -1,0 +1,15 @@
+{% extends "app/layout.html" %}
+
+{% block content %}
+{% load imagekit %}
+
+<center>
+  <h1>오.. 뭔가 잘못된 페이지로 오신거같네요</h1>
+<a href="{% url "app:rest_index" %}">
+  <img src="http://file2.instiz.net/data/file2/2017/02/13/0/d/e/0debefcd8bb6e36f56fb93271b77f786.gif" />
+</a>
+< 시공을 클릭하여 돌아가도록 합시다
+
+</center>
+
+{% endblock %}

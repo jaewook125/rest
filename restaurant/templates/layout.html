@@ -32,10 +32,10 @@
       <ul class="nav navbar-nav">
 {% if user.is_authenticated %}
         <li><a href="{% url "app:rest_new" %}">식당 추가!</a></li>
-
+        <li><a href="{% url "app:rest_list" %}">내 식당 목록!</a></li>
         {% if restaurant.author == user %}
-          <li><a href="{% url "app:rest_edit" restaurant.id %}">식당 수정!</a></li>
-          <li><a href="{% url "app:rest_delete" restaurant.id %}">식당 삭제</a></li>
+          <!-- <li><a href="{% url "app:rest_edit" restaurant.id %}">식당 수정!</a></li> -->
+          <!-- <li><a href="{% url "app:rest_delete" restaurant.id %}">식당 삭제</a></li> -->
         {% endif %}
 
 {% endif %}
